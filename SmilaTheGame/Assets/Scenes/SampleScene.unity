@@ -121,6 +121,46 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &61346911 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 933243642227655339, guid: aab253bfd44a02941be5b16e3fe42135,
+    type: 3}
+  m_PrefabInstance: {fileID: 933243642170513140}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &61346916
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 61346911}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 81ba450d2bc24c34aade91da937faa7a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 2
+--- !u!1 &211303186 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 715722980695273883, guid: 3a30bae00c66b0c49b00a40aa53ec47e,
+    type: 3}
+  m_PrefabInstance: {fileID: 715722980754508425}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &211303187
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 211303186}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 183732122a13a1d4c9c1eee81cd2ff3e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 4
+  startingHealth: 5
+  currentHealth: 0
 --- !u!1001 &715722980754508425
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -132,6 +172,26 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Smiley0
+      objectReference: {fileID: 0}
+    - target: {fileID: 715722980695273884, guid: 3a30bae00c66b0c49b00a40aa53ec47e,
+        type: 3}
+      propertyPath: m_GravityScale
+      value: 0.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 715722980695273884, guid: 3a30bae00c66b0c49b00a40aa53ec47e,
+        type: 3}
+      propertyPath: m_LinearDrag
+      value: 0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 715722980695273884, guid: 3a30bae00c66b0c49b00a40aa53ec47e,
+        type: 3}
+      propertyPath: m_AngularDrag
+      value: 0.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 715722980695273884, guid: 3a30bae00c66b0c49b00a40aa53ec47e,
+        type: 3}
+      propertyPath: m_BodyType
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 715722980695273885, guid: 3a30bae00c66b0c49b00a40aa53ec47e,
         type: 3}
