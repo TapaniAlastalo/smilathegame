@@ -12,9 +12,11 @@ GameObject:
   - component: {fileID: 715722980695273882}
   - component: {fileID: 715722980695273884}
   - component: {fileID: 715722980695273887}
+  - component: {fileID: 211303187}
+  - component: {fileID: 57946798}
   m_Layer: 0
   m_Name: Smiley0
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -51,7 +53,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -96,10 +98,10 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1.4
-  m_LinearDrag: 0.4
-  m_AngularDrag: 0.05
-  m_GravityScale: 0.1
-  m_Material: {fileID: 0}
+  m_LinearDrag: 0.05
+  m_AngularDrag: 0.01
+  m_GravityScale: 0.005
+  m_Material: {fileID: 6200000, guid: b3cce002db3077c4aa6bc4f0406861e6, type: 2}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
@@ -165,3 +167,60 @@ PolygonCollider2D:
       - {x: 0.5960574, y: -1.1421154}
       - {x: 0.8921156, y: -1.0721153}
       - {x: 1.1030293, y: -0.9921153}
+--- !u!114 &211303187
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 715722980695273883}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 183732122a13a1d4c9c1eee81cd2ff3e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 0
+  moveDelay: 0.4
+  maxSpeed: 2.5
+  accelMagnitude: 200
+  cursorMagnitude: 5
+  startingHealth: 5
+  currentHealth: 0
+--- !u!114 &57946798
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 715722980695273883}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7db70e0ea77f5ac47a8f4565a9406397, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ShadowGroup: 0
+  m_HasRenderer: 1
+  m_UseRendererSilhouette: 1
+  m_CastsShadows: 1
+  m_SelfShadows: 0
+  m_ApplyToSortingLayers: 7dd3785c00000000
+  m_ShapePath:
+  - {x: -0.6886487, y: -1.044294, z: 0}
+  - {x: 0.10921574, y: -1.1758137, z: 0}
+  - {x: 0.86345005, y: -1.1059773, z: 0}
+  - {x: 1.4149475, y: -0.8627194, z: 0}
+  - {x: 1.8551283, y: -0.26793933, z: 0}
+  - {x: 1.5685887, y: 0.41576576, z: 0}
+  - {x: 1.2824693, y: 0.98911774, z: 0}
+  - {x: 0.5980711, y: 1.18466, z: 0}
+  - {x: -0.03045702, y: 1.0729215, z: 0}
+  - {x: -0.6589856, y: 1.18466, z: 0}
+  - {x: -1.3294158, y: 1.0170522, z: 0}
+  - {x: -1.680326, y: 0.76494825, z: 0}
+  - {x: -1.8322387, y: 0.37455654, z: 0}
+  - {x: -1.5249581, y: -0.07239699, z: 0}
+  - {x: -1.4830556, y: -0.25397182, z: 0}
+  - {x: -1.2316442, y: -0.7428274, z: 0}
+  m_ShapePathHash: 839603057
+  m_Mesh: {fileID: 0}
+  m_InstanceId: -41280

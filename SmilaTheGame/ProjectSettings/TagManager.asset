@@ -3,7 +3,8 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Enemy
   layers:
   - Default
   - TransparentFX
@@ -38,6 +39,9 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: UltimateBackground
+    uniqueID: 4229250647
+    locked: 0
   - name: Background
     uniqueID: 1551422333
     locked: 1
