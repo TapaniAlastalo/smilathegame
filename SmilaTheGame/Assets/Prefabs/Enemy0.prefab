@@ -172,7 +172,7 @@ MonoBehaviour:
   hitTolerance: 2
   speed: 0
   moveDelay: 0.5
-  maxSpeed: 1
+  maxSpeed: 1.2
   accelMagnitude: 100
   deathEffect: {fileID: 1544011825722587942, guid: 34b40693b3b3e0d40a4ce4fe54d10f71,
     type: 3}
