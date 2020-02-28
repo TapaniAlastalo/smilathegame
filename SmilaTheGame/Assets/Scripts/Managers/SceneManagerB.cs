@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SceneManager : MonoBehaviour
+public class SceneManagerB : MonoBehaviour
 {    
     public const int firstScene = 1;
     public const int lastScene = 2;
