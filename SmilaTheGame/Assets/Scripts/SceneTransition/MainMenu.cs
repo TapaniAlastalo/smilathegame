@@ -5,15 +5,6 @@ using UnityEngine.UI;
 
 public class MainMenu : MonoBehaviour
 {
-    /*void Awake()
-    {
-        transform.Find("StartGameButton").GetComponent<Button>().ClickFunc = () =>
-        {
-            Debug.Log("Click Play");
-            SceneLoader.Load(SceneLoader.Scene.SampleScene);
-        };
-    }*/
-
     public Button startGameButton;
 
     void Start()
@@ -24,8 +15,7 @@ public class MainMenu : MonoBehaviour
 
     void TaskOnClick()
     {
-        Debug.Log("Click Play");
-        SceneLoader.Load(SceneLoader.Scene.SampleScene);
+        SceneLoader.LoadNext();
     }
 
 

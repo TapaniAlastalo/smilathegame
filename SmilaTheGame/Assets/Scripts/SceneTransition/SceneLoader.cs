@@ -5,14 +5,30 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public static class SceneLoader
-{
+{    
     public enum Scene
     {
-        MainMenu,
-        LoadingScene,
-        SampleScene,        
-        //Scene01,
-        //Scene02,
+        MainScene,        
+        Scene01,
+        Scene02,
+        Scene03,        // Last Scene
+        LoadingScene,   // Extras Not Counted
+    }
+
+    private const Scene firstScene = Scene.MainScene;    
+    private const Scene lastScene = Scene.Scene03;      // Last Scene
+    private static Scene currentScene = firstScene;
+
+    public static void LoadNext()
+    {
+        if(currentScene < lastScene)
+        {
+            Load(currentScene +1);
+        }
+        else
+        {
+            Load(Scene.MainScene);
+        }
     }
 
     private static Action onLoaderCallback;
@@ -21,8 +37,9 @@ public static class SceneLoader
     {
         // Set the loader callback action to load the target scene
         onLoaderCallback = () =>
-        {
+        {            
             SceneManager.LoadScene(scene.ToString());
+            currentScene = scene;
         };
         // Load the loading scene
         SceneManager.LoadScene(Scene.LoadingScene.ToString());
@@ -38,10 +55,4 @@ public static class SceneLoader
             onLoaderCallback = null;
         }
     }
-
-    /*transform.Find("MyButton").GetComponent<Button_UI>().ClickFunc = () =>
-        {
-            Debug.Log("Click Main Menu");
-            Loader.Load(Loader.Scene.MainMenu);
-        };*/
 }

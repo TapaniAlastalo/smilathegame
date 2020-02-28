@@ -35,7 +35,7 @@ public class EnemyManager : MonoBehaviour
     {
         if (enemies <= 0)
         {
-            SceneManagerB.NextLevel();            
+            SceneLoader.LoadNext();
         }
     }
 }
