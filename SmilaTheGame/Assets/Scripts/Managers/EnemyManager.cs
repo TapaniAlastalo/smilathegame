@@ -5,8 +5,7 @@ using UnityEngine.UI;
 
 public class EnemyManager : MonoBehaviour
 {
-    public static int enemies;
-
+    private static int enemies;
     private Text text;
 
     private void Awake()
@@ -25,17 +24,23 @@ public class EnemyManager : MonoBehaviour
         enemies++;
     }
 
-    public static void RemoveEnemy()
+    public static void RemoveEnemy(int strength)
     {
         enemies--;
+        Score(strength);
         CheckLevelWin();
     }
 
-    public static void CheckLevelWin()
+    private static void Score(int strength)
+    {
+        ScoreManager.Score(strength);
+    }
+
+    private static void CheckLevelWin()
     {
         if (enemies <= 0)
         {
-            SceneLoader.LoadNext();
+            ScoreManager.LevelWin();
         }
     }
 }

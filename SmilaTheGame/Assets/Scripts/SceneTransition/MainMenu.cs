@@ -2,20 +2,40 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class MainMenu : MonoBehaviour
 {
     public Button startGameButton;
 
-    void Start()
+    public TMP_Text text;
+
+    private void Start()
     {
-        Button btn = startGameButton.GetComponent<Button>();
-        btn.onClick.AddListener(TaskOnClick);
+        Button btnStart = startGameButton.GetComponent<Button>();
+        btnStart.onClick.AddListener(StartGame);
+
+        AddScoreText();        
     }
 
-    void TaskOnClick()
+    private void StartGame()
     {
+        ScoreManager.Reset();
         SceneLoader.LoadNext();
+    }
+
+    private void AddScoreText()
+    {
+        int score = ScoreManager.score;
+        if (score > 0)
+        {
+            text.text = "Your Score: " + score;
+        }
+        else
+        {
+            text.text = "";
+        }
+        
     }
 
 

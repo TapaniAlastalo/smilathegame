@@ -11,6 +11,10 @@ public class Player : MonoBehaviour
     public float accelMagnitude = 200f;
     public float cursorMagnitude = 5f;
 
+
+    public float hitTolerance = 5.0f;
+    //public int strength = 1;
+
     public int startingHealth = 5;
     public int currentHealth;
     public Slider healthSlider;
@@ -99,16 +103,21 @@ public class Player : MonoBehaviour
         anim.SetBool("IsWalking", walking);
     }*/
 
-    public void TakeDamage(int amount)
+    public void TakeDamage(float force)
     {
-        currentHealth -= amount;
-        healthSlider.value = currentHealth;
-        //playerAudio.Play();
+        if(force > hitTolerance)
+        {
+            // count the amount of damage caused
+            int amount = (int)(force / hitTolerance);
+            currentHealth -= amount;
+            healthSlider.value = currentHealth;
+            //playerAudio.Play();
 
-        if (currentHealth <= 0)
-        {            
-            Paralyze();
-        }
+            if (currentHealth <= 0)
+            {
+                Paralyze();
+            }
+        }        
     }
 
     

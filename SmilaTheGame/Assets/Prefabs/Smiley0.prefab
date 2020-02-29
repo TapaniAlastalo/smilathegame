@@ -28,7 +28,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5585238281680010475}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 2.670031, y: 1.8642032, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -184,6 +184,7 @@ MonoBehaviour:
   maxSpeed: 2.5
   accelMagnitude: 200
   cursorMagnitude: 5
+  hitTolerance: 5
   startingHealth: 5
   currentHealth: 0
   healthSlider: {fileID: 0}
@@ -229,4 +230,4 @@ MonoBehaviour:
   - {x: -1.2316442, y: -0.7428274, z: 0}
   m_ShapePathHash: 839603057
   m_Mesh: {fileID: 0}
-  m_InstanceId: -1270
+  m_InstanceId: -46886

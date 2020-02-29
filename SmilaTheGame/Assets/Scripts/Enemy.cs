@@ -5,7 +5,7 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     public float health = 4f;
-    public float hitTolerance = 2f; 
+    public float hitTolerance = 5.0f; 
     public int strength = 1;
 
     public float speed = 0f;
@@ -61,21 +61,20 @@ public class Enemy : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        float magnitude = collision.relativeVelocity.magnitude;
+        Debug.Log("Hit magnitude: " + magnitude);
+        if (magnitude > hitTolerance)
+        {
+            health--;
+            Debug.Log("Hit Taken, Health: " + health);                
+            if (health <= 0f)
+            {
+                Die();
+            }
+        }
         if (collision.gameObject.tag.Equals("Player"))
         {
-            if (collision.relativeVelocity.magnitude > hitTolerance)
-            {
-                health--;
-                Debug.Log("Hit Taken, Health: " + health);                
-                if (health <= 0f)
-                {
-                    Die();
-                }
-                else
-                {                    
-                    Attack();
-                }
-            }
+            AttackPlayer(magnitude);
         }
     }
 
@@ -83,18 +82,16 @@ public class Enemy : MonoBehaviour
     private void Die()
     {
         Instantiate(deathEffect, transform.position, Quaternion.identity);
-        EnemyManager.RemoveEnemy();
-        Score();        
+        EnemyManager.RemoveEnemy(strength);
         Destroy(gameObject);
     }
     
-    private void Attack()
+    private void AttackPlayer(float magnitude)
     {
-        player.TakeDamage(strength);
+        // count the force of attack
+        int force = (int)(strength * magnitude);
+        player.TakeDamage(force);
     }
 
-    private void Score()
-    {
-        ScoreManager.score += strength;
-    }
+    
 }
