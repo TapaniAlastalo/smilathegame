@@ -12,8 +12,11 @@ public class MainMenu : MonoBehaviour
 
     private void Start()
     {
-        Button btnStart = startGameButton.GetComponent<Button>();
-        btnStart.onClick.AddListener(StartGame);
+        if(startGameButton != null)
+        {
+            Button btnStart = startGameButton.GetComponent<Button>();
+            btnStart.onClick.AddListener(StartGame);
+        }        
 
         AddScoreText();        
     }

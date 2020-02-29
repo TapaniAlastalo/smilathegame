@@ -10,19 +10,20 @@ public class ScoreManager : MonoBehaviour
     private const int minMultiplier = 10;
 
     private static float timer;
+    private static float waitTime = 1.4f;
     
-    private Text text;
+    private Text scoreText;
 
     private void Awake()
     {
-        text = GetComponent<Text>();
+        scoreText = GetComponent<Text>();
         timer = 0;
     }
 
     void Update()
     {
         timer += Time.deltaTime;
-        text.text = "" + score;
+        scoreText.text = "" + score;
     }
 
     // Handle Score changes
@@ -41,7 +42,11 @@ public class ScoreManager : MonoBehaviour
     // Handle level win
     public static void LevelWin()
     {
+        StaticCoroutine.Start(WaitNow());        
+    }
 
+    private static void loadNextLevel()
+    {
         SceneLoader.LoadNext();
     }
 
@@ -49,5 +54,11 @@ public class ScoreManager : MonoBehaviour
     public static void Reset()
     {
         score = 0;
+    }
+    
+    static IEnumerator WaitNow()
+    {
+        yield return new WaitForSeconds(waitTime);
+        loadNextLevel();
     }
 }

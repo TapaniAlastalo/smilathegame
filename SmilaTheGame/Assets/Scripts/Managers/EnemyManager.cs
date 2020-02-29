@@ -6,17 +6,17 @@ using UnityEngine.UI;
 public class EnemyManager : MonoBehaviour
 {
     private static int enemies;
-    private Text text;
+    private Text enemyText;
 
     private void Awake()
     {
         enemies = 0;
-        text = GetComponent<Text>();
+        enemyText = GetComponent<Text>();
     }
 
     void Update()
     {
-        text.text = "" + enemies;        
+        enemyText.text = "" + enemies;        
     }
 
     public static void AddEnemy()
