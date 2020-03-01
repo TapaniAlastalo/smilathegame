@@ -179,20 +179,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 183732122a13a1d4c9c1eee81cd2ff3e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0
   moveDelay: 0.4
   maxSpeed: 2.5
   accelMagnitude: 200
   cursorMagnitude: 5
   hitTolerance: 5
+  strength: 1
   startingHealth: 5
-  currentHealth: 0
   healthSlider: {fileID: 0}
-  damageClip: {fileID: 0}
-  paralyzeDelay: 2
+  paralyzeDelay: 0.9
   damageImage: {fileID: 0}
   flashSpeed: 5
   flashColour: {r: 1, g: 0, b: 0, a: 0.1}
+  damageClip: {fileID: 0}
 --- !u!114 &4930318863157690334
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -230,4 +229,4 @@ MonoBehaviour:
   - {x: -1.2316442, y: -0.7428274, z: 0}
   m_ShapePathHash: 839603057
   m_Mesh: {fileID: 0}
-  m_InstanceId: -46886
+  m_InstanceId: -28796

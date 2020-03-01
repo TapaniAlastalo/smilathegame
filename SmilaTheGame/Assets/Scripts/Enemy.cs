@@ -1,41 +1,43 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Enemy : MonoBehaviour
 {
-    public float health = 4f;
-    public float hitTolerance = 5.0f; 
-    public int strength = 1;
-
-    public float speed = 0f;
+    // movement
+    private float speed = 0f;
     public float moveDelay = 0.4f;
     public float maxSpeed = 1.5f;
-    public float accelMagnitude = 140f;    
+    public float accelMagnitude = 140f;
+
+    // health and damage
+    public float startingHealth = 4f;
+    private float currentHealth;
+    private bool damaged;
+    public float hitTolerance = 5.0f; 
+    public int strength = 1;
+    public Slider healthSlider;        
 
     public GameObject deathEffect;
 
     private float timer;
     private Vector3 movement;
     private Vector2 movement2D;
-    private Rigidbody2D enemyRigidbody2D;
-
-    Player player;
-
+    private Rigidbody2D enemyRigidbody2D;  
 
     private void Awake()
     {
         enemyRigidbody2D = GetComponent<Rigidbody2D>();
-        GameObject playerObject = GameObject.FindGameObjectWithTag("Player");
-        if(playerObject != null)
-        {
-            player = playerObject.GetComponent<Player>();
-        }        
     }
 
     void Start()
     {
         EnemyManager.AddEnemy();
+        currentHealth = startingHealth;
+        healthSlider.value = currentHealth;
+        damaged = false;
+        healthSlider.gameObject.SetActive(false);
     }
 
     void Update()
@@ -62,23 +64,40 @@ public class Enemy : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         float magnitude = collision.relativeVelocity.magnitude;
-        Debug.Log("Hit magnitude: " + magnitude);
-        if (magnitude > hitTolerance)
+        if (collision.gameObject.tag.Equals("Player"))
         {
-            health--;
-            Debug.Log("Hit Taken, Health: " + health);                
-            if (health <= 0f)
+            AttackPlayer(collision.gameObject.GetComponent<Player>(), magnitude);
+            // And wait for counter attack
+        }
+        else
+        {            
+            TakeDamage(magnitude);
+        }
+    }
+
+    public void TakeDamage(float force)
+    {
+        if (force > hitTolerance)
+        {
+            // Show health slider when damaged
+            if (damaged == false)
+            {
+                damaged = true;
+                healthSlider.gameObject.SetActive(true);
+            }
+            // count the amount of damage caused
+            int amount = (int)(force / hitTolerance);
+            currentHealth -= amount;
+            healthSlider.value = currentHealth;
+
+            if (currentHealth <= 0)
             {
                 Die();
             }
         }
-        if (collision.gameObject.tag.Equals("Player"))
-        {
-            AttackPlayer(magnitude);
-        }
     }
 
-    
+
     private void Die()
     {
         Instantiate(deathEffect, transform.position, Quaternion.identity);
@@ -86,10 +105,10 @@ public class Enemy : MonoBehaviour
         Destroy(gameObject);
     }
     
-    private void AttackPlayer(float magnitude)
+    private void AttackPlayer(Player player, float magnitude)
     {
-        // count the force of attack
-        int force = (int)(strength * magnitude);
+        // count the attack force
+        float force = strength * magnitude;
         player.TakeDamage(force);
     }
 

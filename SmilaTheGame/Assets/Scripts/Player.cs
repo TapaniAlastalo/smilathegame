@@ -5,31 +5,35 @@ using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
-    public float speed = 0f;
+    // movement
+    private float speed = 0f;
     public float moveDelay = 0.4f;
     public float maxSpeed = 2.5f;
     public float accelMagnitude = 200f;
     public float cursorMagnitude = 5f;
 
-
+    // hit and strength
     public float hitTolerance = 5.0f;
-    //public int strength = 1;
+    public int strength = 1;
 
+    // health
     public int startingHealth = 5;
-    public int currentHealth;
-    public Slider healthSlider;
-    public AudioClip damageClip;
+    private int currentHealth;
+    public Slider healthSlider;    
     
     private float timer;
+    private bool paralyzed;
+    public float paralyzeDelay = 0.9f;
+
     private Vector3 movement;
     private Vector2 movement2D;
     private Rigidbody2D playerRigidbody2D;
 
-    private bool paralyzed;
-    public float paralyzeDelay = 2.0f;
+    // damage
     public Image damageImage;
     public float flashSpeed = 5f;
     public Color flashColour = new Color(1f, 0f, 0f, 0.4f);
+    public AudioClip damageClip;
 
     //private Animator anim;
     //AudioSource playerAudio;
@@ -103,6 +107,20 @@ public class Player : MonoBehaviour
         anim.SetBool("IsWalking", walking);
     }*/
 
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        float magnitude = collision.relativeVelocity.magnitude;
+        if (collision.gameObject.tag.Equals("Enemy"))
+        {
+            AttackEnemy(collision.gameObject.GetComponent<Enemy>(), magnitude);
+            // Wait for counter attack
+        }
+        else
+        {            
+            TakeDamage(magnitude);
+        }        
+    }
+
     public void TakeDamage(float force)
     {
         if(force > hitTolerance)
@@ -120,7 +138,14 @@ public class Player : MonoBehaviour
         }        
     }
 
-    
+    private void AttackEnemy(Enemy enemy, float magnitude)
+    {
+        // count the attack force
+        float force = strength * magnitude;
+        enemy.TakeDamage(force);
+    }
+
+
     void Paralyze()
     {
         //anim.SetTrigger("Sob");
